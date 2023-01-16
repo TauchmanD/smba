@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "smba"
+version = "0.1.0"
+description = ""
+authors = ["Denis Tauchman <denis.tauchman@biano.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.5"
+django-ninja = "^0.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
