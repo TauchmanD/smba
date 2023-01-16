@@ -5,7 +5,7 @@ from .models import Preset
 
 
 class PresetAdmin(admin.ModelAdmin):
-    list_display = ("preset_name", "mode", "active")
+    list_display = ("id", "preset_name", "mode", "active")
     exclude = ('active',)
 
 

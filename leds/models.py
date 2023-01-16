@@ -42,5 +42,5 @@ class Preset(models.Model):
 
     @classmethod
     def get_all_modes(self):
-        return dict(modes = self.MODES)
+        return self.MODES
 
