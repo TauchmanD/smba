@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-iwd@tk3g4yumfr3a*_($)rc3k=y49nh*a1+ht$mkbhy279ibh6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost","192.168.11.10", "192.168.11.89"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'colorfield',
     'leds.apps.LedsConfig',
     'django.contrib.admin',
     'django.contrib.auth',

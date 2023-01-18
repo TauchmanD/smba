@@ -1,4 +1,5 @@
 from django.db import models
+from colorfield.fields import ColorField
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
@@ -7,10 +8,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Preset(models.Model):
     MODES = [
             ('RB', 'rainbow'),
-            ('CB', 'centered_rainbow'),
-            ('BR', 'breathing'),
             ('SO', 'solid_color'),
-            ('PS', 'pulsing_stripes'),
+            ('CW', 'color_wipe'),
+            ('MR', 'meteor_rain'),
     ]
 
     preset_name = models.CharField(
@@ -25,16 +25,7 @@ class Preset(models.Model):
     active = models.BooleanField(
                 default=False
             )
-    speed = models.PositiveIntegerField(
-                default=50,
-                validators=[
-                    MaxValueValidator(100),
-                    MinValueValidator(1),
-                ]
-    )
-    led_settings = models.JSONField(
-                default=dict(color="#ffffff")
-            )
+    color = ColorField(default="#FF0000")
     
     def __str__(self):
         return self.preset_name

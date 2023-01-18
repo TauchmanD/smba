@@ -24,6 +24,14 @@ def get_preset(request, preset_id: int):
     preset = get_object_or_404(Preset, id=preset_id)
     return preset
 
+@router.put("/preset/hardset/{preset_id}")
+def set_active_preset_hard(request, preset_id: int):
+    new_preset = get_object_or_404(Preset, id=preset_id)
+    new_preset.active = True
+    new_preset.save()
+    return {"success": True}
+
+
 @router.put("/preset/{preset_id}")
 def set_active_preset(request, preset_id: int):
     new_preset = get_object_or_404(Preset, id=preset_id)
