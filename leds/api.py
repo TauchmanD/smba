@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-
+from typing import List
 from ninja import Router
 
 from .models import Preset
@@ -18,6 +18,10 @@ def get_active_preset(request):
     active_preset = Preset.objects.get(active=True)
     return active_preset
 
+@router.get("/presets", response=List[PresetResponse])
+def get_all_presets(request):
+    presets = Preset.objects.all()
+    return presets
 
 @router.get("/preset/{preset_id}", response=PresetResponse)
 def get_preset(request, preset_id: int):
@@ -37,8 +41,8 @@ def set_active_preset(request, preset_id: int):
     new_preset = get_object_or_404(Preset, id=preset_id)
     active_preset = Preset.objects.get(active=True)
     active_preset.active = False
-    active_preset.save()
     new_preset.active = True
     new_preset.save()
+    active_preset.save()
     return {"success": True}
     

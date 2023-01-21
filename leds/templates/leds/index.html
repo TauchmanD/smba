@@ -1,0 +1,12 @@
+<h1>Presets</h1>
+{% if presets %}
+    {% for preset in presets %}
+        <div style="background-color: {{ preset.color }};">
+            <p>{{ preset.id }}</p>
+            <p>{{ preset.preset_name }}</p>
+            <p>{{ preset.active }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No presets are available.</p>
+{% endif %}

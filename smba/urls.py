@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ninja import NinjaAPI
 
 from leds.api import router as leds_router
@@ -23,7 +23,8 @@ api = NinjaAPI()
 
 api.add_router('/leds/', leds_router)
 
-urlpatterns = [
+urlpatterns = [ 
+    path('leds/', include('leds.urls')),
     path('api/', api.urls),
     path('admin/', admin.site.urls),
 ]
